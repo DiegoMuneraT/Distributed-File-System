@@ -1,32 +1,47 @@
-import os, logging
+import os
+import logging
 
 def append_file_contents(file1, file2):
-    with open(file1, 'ab') as f1:
-        with open(file2, 'rb') as f2:
-            f1.write(f2.read())
-            return
+    """
+    Appends the contents of file2 to file1.
+
+    :param file1: Path to the first file.
+    :param file2: Path to the second file.
+    """
+    try:
+        with open(file1, 'ab') as f1:
+            with open(file2, 'rb') as f2:
+                f1.write(f2.read())
+    except IOError as e:
+        logging.error(f"Error appending file contents: {e}")
 
 
 def delete_files_in_folder(folder_path):
-    files = os.listdir(folder_path)
-    
-    # Iterate through each file and delete it
-    for file_name in files:
-        file_path = os.path.join(folder_path, file_name)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
+    """
+    Deletes all files in the specified folder.
+
+    :param folder_path: Path to the folder.
+    """
+    try:
+        files = os.listdir(folder_path)
+        for file_name in files:
+            file_path = os.path.join(folder_path, file_name)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+    except OSError as e:
+        logging.error(f"Error deleting files in folder: {e}")
 
 def hadoop_style_split(filename, in_path, out_path, chunk_size, second_filename=None, second_in_path=None):
     """
-    Divide un archivo grande en chunks más pequeños, almacenándolos
-    en un directorio con el nombre del archivo original.
+    Splits a large file into smaller chunks and stores them in a directory.
 
-    :param filename: El nombre del archivo a dividir.
-    :param chunk_size: El tamaño de cada chunk en bytes.
+    :param filename: Name of the file to split.
+    :param in_path: Input directory path.
+    :param out_path: Output directory path.
+    :param chunk_size: Size of each chunk in bytes.
+    :param second_filename: Optional second file to append before splitting.
+    :param second_in_path: Path to the optional second file.
     """
-    
-    # Crea el directorio si no existe
-
     logger = logging.getLogger(__name__)    
     directorio_origen = f"{in_path}/{filename}"
     chunk_num = 1
@@ -49,10 +64,6 @@ def hadoop_style_split(filename, in_path, out_path, chunk_size, second_filename=
                 nombre_parte = f"{directorio_destino}/part{chunk_num:04d}"
                 with open(nombre_parte+".txt", 'wb') as archivo_parte:
                     archivo_parte.write(chunk)
-                    #if chunk_num == 1:
-                        #print(chunk)
-                #print(f"Se creó el chunk {nombre_parte}")
-                
                 chunk_num += 1
                 chunk = full_file.read(chunk_size)
 

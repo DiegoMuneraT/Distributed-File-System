@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-service Fike {
+service File {
     rpc read(ReadFileReq) returns (ReadFileRsp) {}
     rpc write(WriteFileReq) returns (WriteRsp) {}
 }
 
-message ReadFile {
+message ReadFileRsp {
     bytes buffer = 1; 
 }
 
@@ -26,8 +26,8 @@ message WriteRsp {
 service NameNodeService{
     rpc open(FileOpenReq) returns (stream DatanodeList) {}
     rpc create(FileCreateReq) returns (stream CreateRsp) {}
-    rpc heart_beat(DatanodeInfo) return (HeartBeatRsp) {}
-    rpc report(ChunkReport) return (Empty) {}
+    rpc heart_beat(DatanodeInfo) returns (HeartBeatRsp) {}
+    rpc report(ChunkReport) returns (Empty) {}
     rpc listin(Empty) returns (stream DirectoryContent) {}
     rpc get_followers(LeaderFollowersReq) returns (stream follower_info) {}
 }

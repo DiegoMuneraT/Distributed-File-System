@@ -1,4 +1,4 @@
-from server import NadeNodeServer
+from server import NameNodeServer
 import os
 import logging
 from dotenv import load_dotenv
@@ -7,7 +7,7 @@ load_dotenv("namenode/.env")
 
 def initialize()->tuple[int, int, int, str, str, str]:
     address = str(os.getenv("SERVER_HOST"))
-    port = str(os.getenv("SERVER_POST"))
+    port = str(os.getenv("SERVER_PORT"))
     workers = int(os.getenv("SERVER_WORKERS"))
 
     return address, port, workers
@@ -18,7 +18,7 @@ def main():
     logging.basicConfig(level=logging.INFO, format=log_fmt)
     ip_address, port, workers = initialize()
 
-    server = NadeNodeServer(ip_address, port, workers)
+    server = NameNodeServer(ip_address, port, workers)
 
     server.start()
 
