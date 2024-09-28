@@ -16,20 +16,21 @@ def run_ping(client:Client):
 def run_initial_report(report:Reports,directory):
   report.initial_report(directory=directory)
     
-load_dotenv("./.env")
 def initialize()->tuple[int, int, int, int, str, str, str, str]:
-    address = str(os.getenv("SERVER_HOST"))
-    private_address = str(os.getenv("SERVER_PRIVATE_HOST"))
-    port = str(os.getenv("SERVER_PORT"))
-    workers = int(os.getenv("SERVER_WORKERS"))
-    directory = os.getenv("SERVER_DIRECTORY")
-    nameNodeIP= os.getenv("NAMENODE_IP")
-    nameNodePort= os.getenv("NAMENODE_PORT")
-    ttl = int(os.getenv("TTL"))
-    datanode_id = os.getenv("DATANODE_ID")
-    cluster_id= os.getenv("CLUSTER_ID")
+    load_dotenv(dotenv_path="datanode/.env")
+    address = str(os.getenv("SERVER_HOST", "localhost"))
+    private_address = str(os.getenv("SERVER_PRIVATE_HOST", "0.0.0.0"))
+    port = str(os.getenv("SERVER_PORT", 5000))
+    workers = int(os.getenv("SERVER_WORKERS", 20))
+    directory = os.getenv("SERVER_DIRECTORY", "datanode/resources")
+    nameNodeIP= os.getenv("NAMENODE_IP", "44.211.125.188")
+    nameNodePort= os.getenv("NAMENODE_PORT", 8000)
+    ttl = int(os.getenv("TTL", 5))
+    datanode_id = os.getenv("DATANODE_ID", "25d9175c")
+    cluster_id= os.getenv("CLUSTER_ID", 0)
     is_leader = False
-    dotenv_path = os.getenv("DOTENV_PATH")
+    dotenv_path = os.getenv("DOTENV_PATH", './.env')
+
     
     return address, port, workers, directory, nameNodeIP, nameNodePort, ttl, datanode_id, cluster_id, is_leader, dotenv_path, private_address
 

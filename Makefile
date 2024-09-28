@@ -32,13 +32,13 @@ deploy-namenode:
 deploy-datanode:
 	@echo "Desplegando DataNode en AWS EC2..."
 	@scp -i ~/.ssh/Proyecto1.pem -r ./datanode/* ubuntu@$(DATANODE_IP):/home/ubuntu/datanode/
-	@scp -i ~/.ssh/Proyecto1.pem -r ./protos/* ubuntu@$(NAMENODE_IP):/home/ubuntu/protos/
-	@ssh -i ~/.ssh/Proyecto1.pem ubuntu@$(NAMENODE_IP) "\
+	@scp -i ~/.ssh/Proyecto1.pem -r ./protos/* ubuntu@$(DATANODE_IP):/home/ubuntu/protos/
+	@ssh -i ~/.ssh/Proyecto1.pem ubuntu@$(DATANODE_IP) "\
         if ! command -v pip &> /dev/null; then \
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py; \
         fi && \
-        export PYTHONPATH=/home/ubuntu/protos:/home/ubuntu/namenode && \
-        cd /home/ubuntu/namenode && python3 -m pip install -r requirements.txt && python3 main.py"
+        export PYTHONPATH=/home/ubuntu/protos:/home/ubuntu/datanode && \
+        cd /home/ubuntu/datanode && python3 -m pip install -r requirements.txt && python3 main.py"
 
 # Comando docker (puede ser util para despliegue local o en un entorno de contenedores en AWS)
 

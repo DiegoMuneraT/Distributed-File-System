@@ -8,6 +8,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
+# Protos directory to the Python path
+protos_dir = os.path.join(parent_dir, "protos")
+sys.path.append(protos_dir)
+
 # Import statements for protobuf files
 from protos.file_pb2 import WriteRsp,ReadFileRsp
 from protos.file_pb2_grpc import  FileServicer, add_FileServicer_to_server
