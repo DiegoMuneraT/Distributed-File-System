@@ -7,7 +7,7 @@ import sys
 
 from dotenv import load_dotenv
 
-load_dotenv("client/.env")
+load_dotenv("./.env")
 
 def main():
   namenodeIp= os.getenv("NAMENODE_IP", "34.203.26.116")
