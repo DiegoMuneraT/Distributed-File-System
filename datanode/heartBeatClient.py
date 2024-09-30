@@ -12,7 +12,7 @@ sys.path.append(parent_dir)
 protos_dir = os.path.join(parent_dir, "protos")
 sys.path.append(protos_dir)
 
-load_dotenv("datanode/.env")
+load_dotenv(".env")
 logger = logging.getLogger("datanode-client")
 
 class Client:
