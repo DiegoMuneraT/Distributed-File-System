@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 def initialize()->tuple[int, int, int, str, str, str]:
     load_dotenv(dotenv_path="namenode/.env")
     ip_address = os.getenv("SERVER_HOST", "0.0.0.0")
-    port = os.getenv("SERVER_PORT", "50051")
-    workers = int(os.getenv("SERVER_WORKERS", "4"))
+    port = os.getenv("SERVER_PORT", "8000")
+    workers = int(os.getenv("SERVER_WORKERS", "20"))
 
     return ip_address, port, workers
 

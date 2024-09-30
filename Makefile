@@ -19,9 +19,10 @@ run-datanode:
 # Despliegue en AWS
 deploy-namenode:
 	@echo "Desplegando NameNode en AWS EC2..."
-	@scp -i ~/.ssh/Proyecto1.pem -r ./namenode/* ubuntu@$(NAMENODE_IP):/home/ubuntu/namenode/
-	@scp -i ~/.ssh/Proyecto1.pem -r ./protos/* ubuntu@$(NAMENODE_IP):/home/ubuntu/protos/
-	@ssh -i ~/.ssh/Proyecto1.pem ubuntu@$(NAMENODE_IP) "\
+	@scp -i ~/.ssh/nodes.pem -r ./namenode/* ubuntu@$(NAMENODE_IP):/home/ubuntu/namenode/
+	@scp -i ~/.ssh/nodes.pem -r ./protos/* ubuntu@$(NAMENODE_IP):/home/ubuntu/protos/
+	@scp -i ~/.ssh/nodes.pem ./namenode/.env ubuntu@$(NAMENODE_IP):/home/ubuntu/namenode/.env
+	@ssh -i ~/.ssh/nodes.pem ubuntu@$(NAMENODE_IP) "\
         if ! command -v pip &> /dev/null; then \
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py; \
         fi && \
@@ -31,9 +32,10 @@ deploy-namenode:
 
 deploy-datanode:
 	@echo "Desplegando DataNode en AWS EC2..."
-	@scp -i ~/.ssh/Proyecto1.pem -r ./datanode/* ubuntu@$(DATANODE_IP):/home/ubuntu/datanode/
-	@scp -i ~/.ssh/Proyecto1.pem -r ./protos/* ubuntu@$(DATANODE_IP):/home/ubuntu/protos/
-	@ssh -i ~/.ssh/Proyecto1.pem ubuntu@$(DATANODE_IP) "\
+	@scp -i ~/.ssh/nodes.pem -r ./datanode/* ubuntu@$(DATANODE_IP):/home/ubuntu/datanode/
+	@scp -i ~/.ssh/nodes.pem -r ./protos/* ubuntu@$(DATANODE_IP):/home/ubuntu/protos/
+	@scp -i ~/.ssh/nodes.pem ./datanode/.env ubuntu@$(DATANODE_IP):/home/ubuntu/datanode/.env
+	@ssh -i ~/.ssh/nodes.pem ubuntu@$(DATANODE_IP) "\
         if ! command -v pip &> /dev/null; then \
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py; \
         fi && \

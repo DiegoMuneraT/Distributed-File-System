@@ -1,12 +1,23 @@
 import logging
 import os
+import sys
 from threading import Thread
 from typing import List
 
 import grpc
 
-from . import splitter
-from . import unificator
+import splitter
+import unificator
+
+# Get the current directory of the script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+# Protos directory to the Python path
+protos_dir = os.path.join(parent_dir, "protos")
+sys.path.append(protos_dir)
+
 from protos.file_pb2 import ReadFileReq, WriteFileReq, FileOpenReq, FileCreateReq, Empty
 from protos.file_pb2_grpc import FileStub, NameNodeServiceStub
 

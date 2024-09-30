@@ -23,13 +23,13 @@ def initialize()->tuple[int, int, int, int, str, str, str, str]:
     port = str(os.getenv("SERVER_PORT", 5000))
     workers = int(os.getenv("SERVER_WORKERS", 20))
     directory = os.getenv("SERVER_DIRECTORY", "datanode/resources")
-    nameNodeIP= os.getenv("NAMENODE_IP", "44.211.125.188")
+    nameNodeIP= os.getenv("NAMENODE_IP", "34.203.26.116")
     nameNodePort= os.getenv("NAMENODE_PORT", 8000)
     ttl = int(os.getenv("TTL", 5))
     datanode_id = os.getenv("DATANODE_ID", "25d9175c")
     cluster_id= os.getenv("CLUSTER_ID", 0)
     is_leader = False
-    dotenv_path = os.getenv("DOTENV_PATH", './.env')
+    dotenv_path = os.getenv("DOTENV_PATH", '.env')
 
     
     return address, port, workers, directory, nameNodeIP, nameNodePort, ttl, datanode_id, cluster_id, is_leader, dotenv_path, private_address

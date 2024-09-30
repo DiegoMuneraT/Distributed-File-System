@@ -1,14 +1,17 @@
+from cliente import Client
+
 import argparse
 import os 
 import logging
-from client.client import Client
+import sys
+
 from dotenv import load_dotenv
 
 load_dotenv("client/.env")
 
 def main():
-  namenodeIp= os.getenv("NAMENODE_IP")
-  namenodePort=os.getenv("NAMENODE_PORT")
+  namenodeIp= os.getenv("NAMENODE_IP", "34.203.26.116")
+  namenodePort=os.getenv("NAMENODE_PORT", "8000")
 
   log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
   logging.basicConfig(level=logging.INFO, format=log_fmt)
