@@ -26,7 +26,7 @@ def initialize()->tuple[int, int, int, int, str, str, str, str]:
     nameNodeIP= os.getenv("NAMENODE_IP", "34.203.26.116")
     nameNodePort= os.getenv("NAMENODE_PORT", 8000)
     ttl = int(os.getenv("TTL", 5))
-    datanode_id = os.getenv("DATANODE_ID", "25d9175c")
+    datanode_id = os.getenv("DATANODE_ID", "ip11123dt01")
     cluster_id= os.getenv("CLUSTER_ID", 0)
     is_leader = False
     dotenv_path = os.getenv("DOTENV_PATH", '.env')
