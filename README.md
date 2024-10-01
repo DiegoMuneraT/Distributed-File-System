@@ -7,10 +7,10 @@ Espacio para el video
 ## Integrantes
 
 - Diego Alexander Munera
-- Moises A
-- Andres Rua
-- Alberto Diaz
-- Holmer Ortega
+- Moises David Arrieta Hernandez
+- Alberto Andres Diaz Mejia
+- Andres Felipe Rua Ortega
+- Holmer Ortega Gomez
 
 # Conectarse a las instancias si la llave esta en el mismo directorio (ojo no subir la llave a github)
  
