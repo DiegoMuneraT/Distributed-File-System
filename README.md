@@ -25,6 +25,8 @@ Nuestro DFS permite:
 - **Escalabilidad y Tolerancia a Fallos**: Replicación de bloques en múltiples nodos para garantizar la disponibilidad y la integridad de los datos.
 
 ## Arquitectura del Sistema
+![TTelematica](https://github.com/user-attachments/assets/1fce5d28-ae82-4ff5-a801-de97db5e0f13)
+
 El sistema está compuesto por los siguientes componentes:
 - **Cliente**: Interfaz CLI/API que permite a los usuarios interactuar con el sistema de archivos.
 - **NameNode**: Gestiona el espacio de nombres del sistema de archivos y regula el acceso a los archivos.
