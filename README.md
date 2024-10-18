@@ -25,7 +25,7 @@ Nuestro DFS permite:
 - **Escalabilidad y Tolerancia a Fallos**: Replicación de bloques en múltiples nodos para garantizar la disponibilidad y la integridad de los datos.
 
 ## Arquitectura del Sistema
-![TTelematica](https://github.com/user-attachments/assets/1fce5d28-ae82-4ff5-a801-de97db5e0f13)
+![Telematica](https://github.com/user-attachments/assets/1fce5d28-ae82-4ff5-a801-de97db5e0f13)
 
 El sistema está compuesto por los siguientes componentes:
 - **Cliente**: Interfaz CLI/API que permite a los usuarios interactuar con el sistema de archivos.
@@ -50,27 +50,34 @@ docker-compose up --build
 Para interactuar con el sistema de archivos, puedes utilizar la interfaz CLI o hacer llamadas a la API. Ejemplos de comandos:
 - **listar archivos:** dfs_cli ls
 - **Subir archivo:** dfs_cli put mi_archivo.txt
-- **Descargar archivo** dfs_cli get mi_archivo.txt 
+- **Descargar archivo** dfs_cli get mi_archivo.txt
 
 # Conectarse a las instancias si la llave esta en el mismo directorio (ojo no subir la llave a github)
  
-- Namenode: ssh -i "nodes.pem" ubuntu@ec2-34-203-26-116.compute-1.amazonaws.com
-- Datanode1: ssh -i "nodes.pem" ubuntu@ec2-34.205.35.127.compute-1.amazonaws.com
-- Datanode2: ssh -i "nodes.pem" ubuntu@ec2-18-213-115-89.compute-1.amazonaws.com
-- Datanode3: ssh -i "nodes.pem" ubuntu@ec2-3-236-192-52.compute-1.amazonaws.com
+- Namenode: ssh -i "nodes.pem" ubuntu@ec2-184-73-164-96.compute-1.amazonaws.com
+- Datanode1: ssh -i "nodes.pem" ubuntu@ec2-44-214-238-65.compute-1.amazonaws.com
+- Datanode2: ssh -i "nodes.pem" ubuntu@ec2-52-55-176-223.compute-1.amazonaws.com
+- Datanode3: ssh -i "nodes.pem" root@ec2-54-163-226-165.compute-1.amazonaws.com
 
 # Conectarse a las intancias si la llave esta en ~/.ssh
 
-- Namenode: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-34-203-26-116.compute-1.amazonaws.com
-- Datanode1: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-34.205.35.127.compute-1.amazonaws.com
-- Datanode2: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-18-211-99-187.compute-1.amazonaws.com
-- Datanode3: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-44-221-145-22.compute-1.amazonaws.com
+- Namenode: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-184-73-164-96.compute-1.amazonaws.com
+- Datanode1: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-44-214-238-65.compute-1.amazonaws.com
+- Datanode2: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-52-55-176-223.compute-1.amazonaws.com
+- Datanode3: ssh -i ~/.ssh/nodes.pem ubuntu@ec2-54-163-226-165.compute-1.amazonaws.com
 
 # Identificadores de los datanodes:
 
 - Datanode1: ip35127dt01c0
 - Datanode2: ip99187dt02c0
 - Datanode3: ip14522dt01c1
+
+# Identificadores de las instancias
+
+- Namenode: 184.73.164.96
+- Datanode1: 44.214.238.65 
+- Datanode2: 52.55.176.223
+- Datanode3: 54.163.226.165
 
 # Montar e inicializar los contenedores
 sudo docker compose -f docker-compose.namenode.yml up
