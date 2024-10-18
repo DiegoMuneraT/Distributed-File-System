@@ -22,8 +22,6 @@ class IndexTable:
         chunkNames.append(existingChunk.name)
     return chunkNames
   
-
-  """Revisar esta funcion"""
   def add_entry_index_table(self, filename, part_name,datanode_id):
   
     if filename in self.__indexTable.keys():
@@ -32,14 +30,9 @@ class IndexTable:
         if existingChunk.name==part_name:
           existingChunk.add_location(datanode_id)
         elif part_name not in chunkNamesList:
-          #print("ENTRO AL ELIF SOSPECHOSOOOOOOOOOOO")
           chunk = Chunk(name=part_name)
           chunk.add_location(datanode_id)
-          #print("CHUNK LOCATIONS",chunk.locations)
           self.__indexTable[filename].append(chunk)
-          #for chunk in self.__indexTable[filename]:
-          #  print("NOMBRE CHUNK:", chunk.name)
-          #  print("UBICACIONES CHUNK", chunk.locations)
           break
         
       self.logger.info("Updated index table")
